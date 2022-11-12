@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Fonts -->
+    
+    <!-- === Maven Pro === -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- ======= -->
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./assets/styles/main.css">
+    <link rel="stylesheet" href="./assets/styles/app.css">
+    <!-- Title -->
+    <title>Todo App</title>
+</head>
+<body>
+
+    <header>
+
+    </header>
+
+<main>
+    <div class="appWrapper">
+        <div class="app">
+            <div class="appHeader">
+                <h1>TODO APP</h1>
+                <h2>BE PRODUCTIVE</h2>
+            </div>
+
+            <div class="formWrapper">
+                <form class="todoInput">
+                    <input class="textInput" type="text" name="textInput" placeholder="Write new todo">
+                    <input class="submitInput" type="submit" name="submitInput" value="Add task">
+                </form>
+            </div>
+
+            <div class="lineWrapper">
+                <div class="line">
+                </div>
+            </div>
+
+            <div class="taskWrapper">
+                <div class="tasks">
+                    <label class="task">
+                        <input class="taskCheckbox" type="checkbox" name="taskCheckbox"> <span class="taskText">Taska</span> <span class="settings"> <img src="./assets/img/more.svg" alt="" srcset=""></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="appFooter">
+                <a class="deleteAll">Delete all tasks</a>
+                <p class="taskToDo">Tasks to do: <span class="taskRemain">2</span></p>
+            </div>
+        </div>
+    </div>
+</main>
+
+
+
+<!-- Scripts -->
+<script src="./assets/scripts/functions.js"></script>
+<script src="./assets/scripts/main.js"></script>
+</body>
+</html>

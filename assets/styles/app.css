@@ -1,0 +1,154 @@
+
+/* APP CSS */
+
+/*
+== APP CONTAINER ==
+*/
+
+main{
+    width: 100%;
+}
+
+.appWrapper{
+    width: 100%;
+    margin-top: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 150px;
+}
+
+
+
+.app{
+    border-radius: 55px;
+    width: 45%;
+    max-width: 950px;
+    min-width: 700px;
+    min-height: 400px;
+    background-color: var(--appBackground);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
+}
+
+/*
+== APP HEADER ==
+*/
+
+.appHeader{
+    margin-top: 70px;
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1{
+    font-size: 45px;
+    color: var(--primary);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+h2{
+    margin-top: 2px;
+    font-size: 20px;
+    color: var(--secondary);
+    font-weight: 200;
+    letter-spacing: 0.3px;
+
+}
+
+
+/* 
+== APP FORM / INPUT / SUBMIT ==
+*/
+ 
+.formWrapper{
+    width: 100%;
+    margin-top: 45px;
+    display: flex;
+    justify-content: center;
+}
+
+.todoInput{
+    position: relative;
+    left: 40px;
+    display: flex;
+    padding: 0px 90px;
+    width: 100%;
+}
+
+.textInput{
+    border: none;
+    padding: 0px 20px;
+    padding-right: 100px;
+    height: 52px;
+    border-radius: 16px;
+    font-size: 19px;
+    color: var(--text);
+    width: 100%;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.08) ;
+}
+
+.textInput::placeholder{
+    color: var(--placeholder);
+}
+
+.textInput:focus{
+    outline: none;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.20) ;
+}
+
+.textInput:focus::placeholder{
+    color: transparent;
+}
+
+.submitInput{
+    cursor: pointer;
+    color: var(--primary);
+    font-size: 19px;
+    background-color: transparent;
+    border: none;
+    position: relative;
+    left: -100px;
+}
+
+.submitInput:hover{
+    color: #0059b8;
+}
+
+/* 
+== APP LINE == 
+*/
+
+.lineWrapper{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 100px;
+}
+
+.line{
+    border-bottom: 1px solid var(--progress);
+    width: 100%;
+}
+
+.taskWrapper{
+    background-color: #0059b84f;
+    width: 100%;
+    min-height: 120px;
+}
+
+
+
+
+
+.appFooter{
+    background-color: #b7f88c46;
+    width: 100%;
+    height: 70px;
+}
+

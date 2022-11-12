@@ -1,0 +1,42 @@
+
+/* MAIN CSS */
+
+/*
+== Fonts == 
+
+    1. font-family: 'Maven Pro', sans-serif;
+
+*/
+
+
+
+
+/*
+== Basic ==
+*/
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: 'Maven Pro', sans-serif;
+}
+
+/* 
+== Colors ==
+*/
+
+:root{
+
+    --primary: #007BFF;
+    --secondary: #A0A0A0;
+    --progress: #CECECE;
+    --text: #525252;
+    --appBackground: #FBFBFB;
+    --white: #fff;
+    --delete: #F76030;
+    --placeholder: #B7B7B7;
+
+}
+
+
