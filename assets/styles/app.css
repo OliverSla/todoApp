@@ -24,8 +24,8 @@ main{
 .app{
     border-radius: 55px;
     width: 45%;
-    max-width: 950px;
-    min-width: 700px;
+    min-width: 950px;
+    min-width: 800px;
     min-height: 400px;
     background-color: var(--appBackground);
     box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.25);
@@ -87,7 +87,7 @@ h2{
     height: 52px;
     border-radius: 16px;
     font-size: 19px;
-    color: var(--text);
+    color: #007BFF;
     width: 100%;
     box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.08) ;
 }
@@ -98,7 +98,7 @@ h2{
 
 .textInput:focus{
     outline: none;
-    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.20) ;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.15) ;
 }
 
 .textInput:focus::placeholder{
@@ -136,19 +136,141 @@ h2{
     width: 100%;
 }
 
+
+/* 
+== TASKS AND SETTINGS ==
+*/
+
 .taskWrapper{
-    background-color: #0059b84f;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    padding: 0px 100px;
     width: 100%;
-    min-height: 120px;
+    
+}
+
+.tasks{
+    margin: 10px 0px;
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+.taskText{
+    color: var(--primary);
+    font-size: 20px;
+    padding-left: 20px;
+}
+
+.task{
+    padding: 10px 0px;
+    flex: 1 100%;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    position: relative;
 }
 
 
+.rightImg{
+    flex: 2 10%;
+    display: none;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.settings{
+    position: relative;
+    left: 10px;
+    padding: 0px 10px;
+    cursor: pointer;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/*
+Checkbox
+*/
+
+
+
+.checkIcon{
+    display: none;
+
+    position: relative;
+    left: 5px;
+    bottom: 0px;
+}
+
+.checkbox{
+    cursor: pointer;
+    position: relative;
+    display: block;
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    border: 2px solid var(--primary);
+    background-color: transparent;
+}
+
+.checkbox:hover{
+    
+}
+
+
+
+
+/* 
+== APP FOOTER ==
+*/
 
 
 
 .appFooter{
-    background-color: #b7f88c46;
+    margin-bottom: 10px;
+    justify-content: center;
+    display: flex;
     width: 100%;
     height: 70px;
 }
 
+.deleteAll{
+    cursor: pointer;
+    font-weight: 100;
+    height: 47px;
+    padding: 0px 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--delete);
+    font-size: 18px;
+    border-radius: 13px;
+    color: white;
+    border: 10px 10px;
+    
+}
+
+.deleteAll:hover{
+    border: 1px solid blue;
+    background-color: transparent;
+    transition: 0.2s;
+    color: var(--delete);
+
+}
+
+
+.taskToDo{
+    margin-top: 13px;
+    margin-left: 20px;
+    font-size: 18px;
+    color: var(--text);
+}
+
+.taskRemain{
+    font-size: 18px;
+    color: var(--primary);
+    font-weight: 500;
+}
