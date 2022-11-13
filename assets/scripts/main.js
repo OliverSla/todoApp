@@ -5,8 +5,16 @@ let checkbox = document.querySelector(".checkbox")
 let checkIcon = document.querySelector(".checkIcon")
 let taskWrapper = document.querySelector(".taskWrapper")
 let rightImg = document.querySelector(".rightImg")
+let settingsIcon = document.querySelector(".settingsIcon")
+let settingBlock = document.querySelector(".settingBlock")
 
 
+settingsIcon.addEventListener("click", function(e){
+
+    settingBlock.style.display = "flex"
+
+
+})
 
 
 
