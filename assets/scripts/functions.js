@@ -36,7 +36,7 @@ let createTask = function(oneUser){
 
     let taskText = document.createElement("span")
     taskText.className = "taskText"
-    taskText.textContent = oneUser.taskText
+    taskText.textContent = oneUser[0].taskText
     task.appendChild(taskText)
 
     let rightImg = document.createElement("div")

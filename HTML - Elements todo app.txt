@@ -1,0 +1,19 @@
+            <div class="taskWrapper">
+
+                <div class="tasks ">
+                    <label class="task">
+                        <div class="checkbox"><img class="checkIcon" src="./assets/img/check.svg" alt="" srcset=""></div>
+                        <span class="taskText">New todo to do</span>
+                    </label>
+                    <div class="rightImg "> <span class="settingsIcon"> <img class="settingIconImg" src="./assets/img/more.svg" alt="" srcset=""><img class="cancelIconImg" src="./assets/img/cancel.svg" alt="" srcset=""></span>
+                    <div class="settingWrapper ">
+                        <ul class="settingBlock">
+                            <li class="editTask"><img class="iconEdit" src="./assets/img/edit.svg" alt="" srcset=""> <span class="settingTextEdit settingText">Edit</span></li>
+                            <li class="duplicateTask"><img class="iconDuplicate" src="./assets/img/duplicate.svg" alt="" srcset=""> <span class="settingTextDuplicate settingText">Duplicate</span></li>
+                            <li class="deleteTask"><img class="deleteIcon" src="./assets/img/delete.svg" alt="" srcset=""><span class="settingTextDelete settingText">Delete</span></li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+                
+            </div>
