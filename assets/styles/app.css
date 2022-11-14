@@ -180,6 +180,8 @@ h2{
     justify-content: flex-end;
 }
 
+
+
 .settingsIcon{
     z-index: 100;
     position: relative;
@@ -192,12 +194,22 @@ h2{
     align-items: center;
 }
 
+.settingIconImg {
+    display: flex;
+}
+
+.cancelIconImg{
+    display: none;
+}
+
+
+
 /*
 Settings
 */
 
 .settingWrapper{
-    background-color: #0059b8;
+    /* background-color: #0059b8; */
     padding-top: 50px;
     display: none;
     position: absolute;
@@ -324,4 +336,8 @@ Checkbox
     font-size: 18px;
     color: var(--primary);
     font-weight: 500;
+}
+
+.hoverForSettings{
+    background-color: rgba(0, 0, 255, 0.468);
 }

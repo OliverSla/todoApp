@@ -9,7 +9,14 @@ let settingsIcon = document.querySelector(".settingsIcon")
 let settingBlock = document.querySelector(".settingBlock")
 let settingWrapper = document.querySelector(".settingWrapper")
 
+let deleteAll = document.querySelector(".deleteAll")
 
+let settingIconImg = document.querySelector(".settingIconImg")
+let cancelIconImg = document.querySelector(".cancelIconImg")
+
+let todoInput = document.querySelector(".todoInput")
+
+let tasks = getLS()
 
 
 /*
@@ -47,21 +54,53 @@ If click setting icon show settings
 */
 
 settingsIcon.addEventListener("click", function(e){
-    settingWrapper.style.display = "flex"
+
+    let styleOfsettingWrapper = getComputedStyle(settingWrapper)
+    let styleOfSettingIcon = getComputedStyle(settingIconImg)
+
+    if(styleOfsettingWrapper.display === "none"){
+      settingWrapper.style.display = "flex"
+    }else{
+       settingWrapper.style.display = "none"
+    }
+
+    if(styleOfSettingIcon.display === "flex"){
+        settingIconImg.style.display = "none"
+        cancelIconImg.style.display = "flex"
+    }else{
+        settingIconImg.style.display = "flex"
+        cancelIconImg.style.display = "none"
+    }
+
 })
 
-settingBlock.addEventListener("mouseover", function(e){
-    rightImg.style.display = "flex"
-    settingWrapper.style.display = "flex"
+/*
+Delete All Todos
+*/
+
+
+todoInput.addEventListener("submit", function(e){
+    e.preventDefault()
+
+    let valueOfInput = e.target.elements.textInput.value
+    
+    let pushToArray = {
+        taskText: valueOfInput,
+        completion: false,
+        id: uuidv4(),
+    }
+
+    tasks.push(pushToArray)
+    setItemToLS(tasks)
+    
+    console.log(tasks)
+
+    e.target.elements.textInput.value = ""
+
 })
 
-settingWrapper.addEventListener("mouseout", function(e){
-    settingWrapper.style.display = "none"
-})
 
-settingWrapper.addEventListener("mouseout", function(e){
-    settingWrapper.style.display = "flex"
-})
+
 
 
 
