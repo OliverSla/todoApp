@@ -1,97 +1,62 @@
 
 
-
-
+let todoInput = document.querySelector(".todoInput")
 let taskWrapper = document.querySelector(".taskWrapper")
 
-let deleteAll = document.querySelector(".deleteAll")
 
-let todoInput = document.querySelector(".todoInput")
-
-let tasks = getLS()
-
-
-
-
-    
-
-
+let localTasks = getLS()
 
 todoInput.addEventListener("submit", function(e){
+
     e.preventDefault()
 
-    let valueOfInput = e.target.elements.textInput.value
-    
-    let pushToArray = {
-        taskText: valueOfInput,
-        completion: false,
+    let inputValue = e.target.elements.textInput.value
+
+    let taskObject = {
         id: uuidv4(),
+        taskText: inputValue,
+        check: false,
     }
 
-    tasks.push(pushToArray)
-    setItemToLS(tasks)
+    localTasks.push(taskObject)
+    setItemToLS(localTasks)
 
-    createTask(tasks)
-
-
-
-    e.target.elements.textInput.value = ""
-
-
-    let rightImg = document.querySelector(".rightImg")
-    let checkbox = document.querySelector(".checkbox")
-    let checkIcon = document.querySelector(".checkIcon")
-    let settingsIcon = document.querySelector(".settingsIcon")
-    let settingWrapper = document.querySelector(".settingWrapper")
-
-
-    settingsIcon.addEventListener("click", function(e){
-
-        let styleOfSettingWrapper = getComputedStyle(settingWrapper)
-        
-        if(styleOfSettingWrapper.display === "none"){
-            settingWrapper.style.display = "flex"
-        }else{
-            settingWrapper.style.display = "none"
-        }
-
-    })
-
-    taskWrapper.addEventListener("mouseover", function(e){
-        rightImg.style.display = "flex"
+    let lastObjectInArray = localTasks[localTasks.length - 1]
     
-    })
-    
-    taskWrapper.addEventListener("mouseout", function(e){
-        rightImg.style.display = "none"
-        settingWrapper.style.display = "none"
+    console.log(localTasks)
+    console.log(localTasks.length)
+    console.log(lastObjectInArray)
 
+    createStructure(lastObjectInArray)
     
-    })
-    
-    
-    
-    checkbox.addEventListener("click", function(){
-    
-        let styleOfcheckIcon = getComputedStyle(checkIcon)
-        
-        if(styleOfcheckIcon.display === "none"){
-           return checkIcon.style.display = "block"
-        }else{
-            return checkIcon.style.display = "none"
-        }
-        
-        })
-
 })
 
+/* Load tasks form localstorage */
 
+if(localTasks.length > 0){
 
-console.log(tasks.length)
-
-
-
+    localTasks.forEach(function(oneUser){
+        createStructure(oneUser)
+    })
     
+}else{
     
+}
 
+let lastObjectInArray = localTasks[localTasks.length - 1]
+
+let whatId = lastObjectInArray.id
+
+
+localTasks.find(function(element){
+    if(whatId === element.id){
+        console.log(element.taskText)
+    }
+})
+
+localTasks.find(function(element){
+    if(element.id === whatId){
+        console.log(element)
+    }
+})
 

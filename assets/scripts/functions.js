@@ -2,115 +2,52 @@
 
 let getLS = function(){
     if(localStorage.getItem("task") !== null){
-        let toString = localStorage.getItem("task")
-        toResult = JSON.parse(toString)
-        return toResult
+        let getTasks = localStorage.getItem("task")
+        result = JSON.parse(getTasks)
+        return result
     }else{
         return []
     }
 }
 
+
 let setItemToLS = function(toSave){
     let toString = JSON.stringify(toSave)
     localStorage.setItem("task", toString )
 }
+  
 
+let createStructure = function(object){
 
-let createTask = function(oneUser){
-    let tasks = document.createElement("div")
-    tasks.className = "tasks"
-    taskWrapper.appendChild(tasks)
+    let taskDiv = document.createElement("div")
+    taskDiv.className = "tasks"
+    taskDiv.innerHTML = `
 
-    let task = document.createElement("label")
-    task.className = "task"
-    tasks.appendChild(task)
+    <label for="${object.id}" class="task">
+        <div class="checkbox"><img class="checkIcon" src="./assets/img/check.svg" id="${object.id}"></div>
+        <span class="taskText">${object.taskText}</span>
 
-    let checkbox = document.createElement("div")
-    checkbox.className = "checkbox"
-    task.appendChild(checkbox)
-
-    let checkIcon = document.createElement("img")
-    checkIcon.className = "checkIcon"
-    checkIcon.src = "./assets/img/check.svg"
-    checkbox.appendChild(checkIcon)
-
-    let taskText = document.createElement("span")
-    taskText.className = "taskText"
-    taskText.textContent = oneUser[0].taskText
-    task.appendChild(taskText)
-
-    let rightImg = document.createElement("div")
-    rightImg.className = "rightImg"
-    tasks.appendChild(rightImg)
-
-    let settingsIcon = document.createElement("span")
-    settingsIcon.className = "settingsIcon"
-    rightImg.appendChild(settingsIcon)
-
-    let settingIconImg = document.createElement("img")
-    settingIconImg.className = "settingIconImg"
-    settingIconImg.src = "./assets/img/more.svg"
-    settingsIcon.appendChild(settingIconImg)
-
-    let cancelIconImg = document.createElement("img")
-    cancelIconImg.className = "cancelIconImg"
-    cancelIconImg.src = "./assets/img/cancel.svg"
-    settingsIcon.appendChild(cancelIconImg)
-
-    let settingWrapper = document.createElement("div")
-    settingWrapper.className = "settingWrapper"
-    tasks.appendChild(settingWrapper)
-
-    let settingBlock = document.createElement("ul")
-    settingBlock.className = "settingBlock"
-    settingWrapper.appendChild(settingBlock)
-
-    let editTask = document.createElement("li")
-    editTask.className = "editTask"
-    settingBlock.appendChild(editTask)
-
-    let iconEdit = document.createElement("img")
-    iconEdit.className = "iconEdit"
-    iconEdit.src = "./assets/img/edit.svg"
-    editTask.appendChild(iconEdit)
-
-    let settingTextEdit = document.createElement("span")
-    settingTextEdit.className = "settingTextEdit"
-    settingTextEdit.textContent = "Edit"
-    editTask.appendChild(settingTextEdit)
-
-
-
-    let duplicateTask = document.createElement("li")
-    duplicateTask.className = "duplicateTask"
-    settingBlock.appendChild(duplicateTask)
-
-    let iconDuplicate = document.createElement("img")
-    iconDuplicate.className = "iconDuplicate"
-    iconDuplicate.src = "./assets/img/duplicate.svg"
-    duplicateTask.appendChild(iconDuplicate)
-
-    let settingTextDuplicate = document.createElement("span")
-    settingTextDuplicate.className = "settingTextDuplicate"
-    settingTextDuplicate.textContent = "Duplicate"
-    duplicateTask.appendChild(settingTextDuplicate)
-
-
-    let deleteTask = document.createElement("li")
-    deleteTask.className = "deleteTask"
-    settingBlock.appendChild(deleteTask)
-
-    let deleteIcon = document.createElement("img")
-    deleteIcon.className = "deleteIcon"
-    deleteIcon.src = "./assets/img/delete.svg"
-    deleteTask.appendChild(deleteIcon)
-
-    let settingTextDelete = document.createElement("span")
-    settingTextDelete.className = "settingTextDelete"
-    settingTextDelete.textContent = "Delete"
-    deleteTask.appendChild(settingTextDelete)
-
+        <div class="rightImg "> <span class="settingsIcon"> <img class="settingIconImg" src="./assets/img/more.svg" alt="" srcset=""><img class="cancelIconImg" src="./assets/img/cancel.svg" alt="" srcset=""></span>
     
+        <div class="settingWrapper ">
+            <ul class="settingBlock">
+                <li class="editTask"><img class="iconEdit" src="./assets/img/edit.svg" alt="" srcset=""> <span class="settingText">Edit</span></li>
+    
+                <li class="duplicateTask"><img class="iconDuplicate" src="./assets/img/duplicate.svg" alt="" srcset=""> <span class="settingText">Duplicate</span></li>
+    
+                <li class="deleteTask"><img class="deleteIcon" src="./assets/img/delete.svg" alt="" srcset=""><span class="settingText">Delete</span></li>
+            </ul>
+        </div>
+        </div>
+    </label>
+    `
 
-
+    taskWrapper.appendChild(taskDiv)
+    
 }
+
+
+
+
+
+

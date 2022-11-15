@@ -211,7 +211,7 @@ Settings
 .settingWrapper{
     /* background-color: #0059b8; */
     padding-top: 50px;
-    display: none;
+    display: flex;
     position: absolute;
     right: -170px;
     top: 0px;
@@ -265,11 +265,11 @@ Checkbox
 
 .checkIcon{
     display: none;
-
     position: relative;
     left: 5px;
     bottom: 0px;
 }
+
 
 .checkbox{
     cursor: pointer;
