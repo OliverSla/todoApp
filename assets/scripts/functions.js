@@ -1,4 +1,5 @@
 
+/* Get localStorage todo list */
 
 let getLS = function(){
     if(localStorage.getItem("task") !== null){
@@ -6,16 +7,18 @@ let getLS = function(){
         result = JSON.parse(getTasks)
         return result
     }else{
-        return []
+        return [] 
     }
 }
 
+/* Set localsotrage todos */
 
 let setItemToLS = function(toSave){
     let toString = JSON.stringify(toSave)
     localStorage.setItem("task", toString )
 }
   
+/* Create structure of todo */
 
 let createStructure = function(object){
 
@@ -45,6 +48,11 @@ let createStructure = function(object){
     taskWrapper.appendChild(taskDiv)
     
 }
+
+
+
+ 
+
 
 
 
