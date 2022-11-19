@@ -264,10 +264,17 @@ Checkbox
 
 
 .checkIcon{
-    display: none;
     position: relative;
     left: 5px;
     bottom: 0px;
+}
+
+.check{
+    display: flex;
+}
+
+.uncheck{
+    display: none;
 }
 
 

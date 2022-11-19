@@ -19,21 +19,16 @@ todoInput.addEventListener("submit", function(e){
         taskText: inputValue,
         check: false,
     }
-
+    
     localTasks.push(taskObject)
+    createStructure(taskObject)
     setItemToLS(localTasks)
 
-    let lastObjectInArray = localTasks[localTasks.length - 1]
-    
-
-    createStructure(lastObjectInArray)
-
-
-    /* LocalStorage delete input value */
+    checkboxFunctionSubmit(taskObject)
 
     e.target.elements.textInput.value = ""
 
-
+    
     
 })
 
@@ -44,13 +39,12 @@ if(localTasks.length > 0){
     localTasks.forEach(function(oneTask){
         createStructure(oneTask)
     })
+
+    checkboxFunctionLoad()
     
 }else{
     console.log("LocalStorage je prázdny")
 }
-
-
-
 
 
 
