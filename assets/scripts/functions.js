@@ -17,17 +17,93 @@ let setItemToLS = function(toSave){
     let toString = JSON.stringify(toSave)
     localStorage.setItem("task", toString )
 }
+
+/* Checkbox */
+
+let checkboxFunctionLoad = function(){
+
+    let checkbox = document.querySelectorAll(".checkbox")
+
+    checkbox.forEach(function(oneTask){
+        oneTask.addEventListener("click", function(){
+           let idOfObject =  oneTask.children[0].id
+           console.log(oneTask.children[0].id)
+    
+           const indexOfTask = localTasks.findIndex( (taskas) => taskas.id === idOfObject)
+
+    
+           if(localTasks[indexOfTask].check == false){
+            localTasks[indexOfTask].check = true
+            oneTask.children[0].classList = "checkIcon check"
+            
+           }else{
+            localTasks[indexOfTask].check = false
+            oneTask.children[0].classList = "checkIcon uncheck"
+           }
+    
+           setItemToLS(localTasks)
+           
+        })
+        
+    })
+
+}
+
+/* Checkbox - in submit */
+
+let checkboxFunctionSubmit = function(id){
+
+    let indexOfTaskInInput = localTasks.findIndex(function(taska){
+        return taska.id === id.id
+    })
+    
+    console.log(indexOfTaskInInput)
+    
+    let checkbox = document.querySelectorAll(".checkbox")
+    
+    checkbox[indexOfTaskInInput].addEventListener("click", function(){
+           let idOfObject =  checkbox[indexOfTaskInInput].children[0].id
+           console.log(checkbox[indexOfTaskInInput].children[0].id)
+    
+           const indexOfTask = localTasks.findIndex( (taskas) => taskas.id === idOfObject)
+    
+    
+           if(localTasks[indexOfTask].check == false){
+            localTasks[indexOfTask].check = true
+            checkbox[indexOfTaskInInput].children[0].classList = "checkIcon check"
+            
+           }else{
+            localTasks[indexOfTask].check = false
+            checkbox[indexOfTaskInInput].children[0].classList = "checkIcon uncheck"
+           }
+    
+           setItemToLS(localTasks)
+           
+        })
+
+}
+
   
 /* Create structure of todo */
+
 
 let createStructure = function(object){
 
     let taskDiv = document.createElement("div")
     taskDiv.className = "tasks"
+
+    let chechOrNot = ""
+
+    if(object.check === false){
+       chechOrNot = "uncheck"
+    }else{
+        chechOrNot = "check"
+    }
+
     taskDiv.innerHTML = `
 
     <label for="${object.id}" class="task">
-        <div class="checkbox"><img class="checkIcon" src="./assets/img/check.svg" id="${object.id}"></div>
+        <div class="checkbox"><img class="checkIcon ${chechOrNot} " src="./assets/img/check.svg" id="${object.id}"></div>
         <span class="taskText">${object.taskText}</span>
 
         <div class="rightImg "> <span class="settingsIcon"> <img class="settingIconImg" src="./assets/img/more.svg" alt="" srcset=""><img class="cancelIconImg" src="./assets/img/cancel.svg" alt="" srcset=""></span>
