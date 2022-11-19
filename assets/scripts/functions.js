@@ -63,8 +63,9 @@ let checkboxFunctionSubmit = function(idTaskSubmit){
            let idOfObject =  checkbox[indexOfTaskInInput].children[0].id
            console.log(checkbox[indexOfTaskInInput].children[0].id)
     
+
            const indexOfTask = localTasks.findIndex( (task) => task.id === idOfObject)
-    
+
            if(localTasks[indexOfTask].check == false){
             localTasks[indexOfTask].check = true
             checkbox[indexOfTaskInInput].children[0].classList = "checkIcon check"
