@@ -5,6 +5,11 @@
 == APP CONTAINER ==
 */
 
+
+*::selection { background: transparent; } ::-moz-selection { background: transparent; }
+
+
+
 main{
     width: 100%;
 }
@@ -171,35 +176,46 @@ h2{
     position: relative;
 }
 
-
 .rightImg{
-    flex: 2 10%;
     display: none;
+    flex: 2 10%;
     align-items: center;
     width: 100%;
     justify-content: flex-end;
 }
 
+.task:hover .rightImg{
+    display: flex;
+}
 
 
 .settingsIcon{
-    z-index: 100;
-    position: relative;
-    left: 10px;
-    padding: 0px 10px;
+    padding: 20px;
+    right: -20px;
     cursor: pointer;
+    z-index: 1;
+    position: absolute;
     height: 100%;
-    position: relative;
     display: flex;
     align-items: center;
 }
 
+.settingBtn{
+    position: absolute;
+    padding: 25px;
+    right: -25px;
+}
+
 .settingIconImg {
     display: flex;
+    transform: scale(1.1);
+    transition: 0.5s;
 }
 
 .cancelIconImg{
     display: none;
+    transform: scale(1.1);
+    transition: 0.5s;
 }
 
 
@@ -209,18 +225,23 @@ Settings
 */
 
 .settingWrapper{
-    /* background-color: #0059b8; */
-    padding-top: 50px;
+    z-index: 10;
     display: flex;
+    margin-top: 40px;
+    padding-top: 10px;
     position: absolute;
     right: -170px;
     top: 0px;
 }
 
+
+
 .settingBlock{
+    background-image: url("./assets/img/more.svg");
     background-color: rgb(250, 250, 250,0.70);
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.08);
-    display: flex;
+    display: none;
+    position: relative;
     flex-direction: column;
     width: 240px;
     height: 140px;
@@ -228,6 +249,8 @@ Settings
     justify-content: space-between;
     padding: 4px;
 }
+
+  
 
 .settingText{
     padding-left: 19px;
@@ -261,8 +284,6 @@ li:hover{
 Checkbox
 */
 
-
-
 .checkIcon{
     position: relative;
     left: 5px;
@@ -288,9 +309,6 @@ Checkbox
     border: 2px solid var(--primary);
     background-color: transparent;
 }
-
-
-
 
 
 /* 

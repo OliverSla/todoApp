@@ -11,9 +11,9 @@ let getLS = function(){
     }
 }
 
-/* Set localsotrage todos */
+/* Set localStorage todos */
 
-let setItemToLS = function(toSave){
+let setTodosToLS = function(toSave){
     let toString = JSON.stringify(toSave)
     localStorage.setItem("task", toString )
 }
@@ -40,9 +40,9 @@ let checkboxFunctionLoad = function(){
             localTasks[indexOfTask].check = false
             oneTask.children[0].classList = "checkIcon uncheck"
            }
-    
-           setItemToLS(localTasks)
-           
+
+           setTodosToLS(localTasks)
+
         })
         
     })
@@ -61,23 +61,137 @@ let checkboxFunctionSubmit = function(idTaskSubmit){
     
     checkbox[indexOfTaskInInput].addEventListener("click", function(){
            let idOfObject =  checkbox[indexOfTaskInInput].children[0].id
-           console.log(checkbox[indexOfTaskInInput].children[0].id)
-    
 
            const indexOfTask = localTasks.findIndex( (task) => task.id === idOfObject)
 
            if(localTasks[indexOfTask].check == false){
             localTasks[indexOfTask].check = true
-            checkbox[indexOfTaskInInput].children[0].classList = "checkIcon check"
-            
+            checkbox[indexOfTaskInInput].children[0].classList = "checkIcon check"  
            }else{
             localTasks[indexOfTask].check = false
             checkbox[indexOfTaskInInput].children[0].classList = "checkIcon uncheck"
            }
     
-           setItemToLS(localTasks)
+           setTodosToLS(localTasks)
            
         })
+
+}
+
+/* After click on icon show settings */
+
+let showSettingOnSubmit = function(idTaskSubmit){
+
+    let settingsIcon = document.querySelectorAll(".settingsIcon")
+    let settingBlock = document.querySelectorAll(".settingBlock")
+    let settingIconImg = document.querySelectorAll(".settingIconImg")
+    let cancelIconImg = document.querySelectorAll(".cancelIconImg")
+    let editTask = document.querySelectorAll(".editTask")
+    let duplicateTask = document.querySelectorAll(".duplicateTask")
+    let deleteTask = document.querySelectorAll(".deleteTask")
+    let tasks = document.querySelectorAll(".tasks")
+
+    let indexOfTaskInInput = localTasks.findIndex(function(task){
+        return task.id === idTaskSubmit.id
+    })
+    
+         settingsIcon[indexOfTaskInInput].addEventListener("click", function(e){
+
+
+            let idOfObject = settingsIcon[indexOfTaskInInput].parentElement.parentElement.id
+    
+            const indexOfTask = localTasks.findIndex( (task) => task.id === idOfObject)
+            
+            let getStyleOfSettingBlock = getComputedStyle(settingBlock[indexOfTask])   
+    
+            if(getStyleOfSettingBlock.display === "none"){
+                settingBlock[indexOfTask].style.display = "flex"
+                settingIconImg[indexOfTask].style.display = "none"
+                cancelIconImg[indexOfTask].style.display = "flex"
+                
+            }else{
+                settingBlock[indexOfTask].style.display = "none"
+                settingIconImg[indexOfTask].style.display = "flex"
+                cancelIconImg[indexOfTask].style.display = "none"
+            }
+
+            deleteTask[indexOfTask].addEventListener("click", function(e){
+
+
+                localTasks.splice(indexOfTask, 1)
+                tasks[indexOfTask].remove()
+                setTodosToLS(localTasks)
+
+            })
+    
+        })
+        
+
+}
+
+
+let showSetting = function(){
+
+    let settingsIcon = document.querySelectorAll(".settingsIcon")
+    let settingBlock = document.querySelectorAll(".settingBlock")
+    let settingIconImg = document.querySelectorAll(".settingIconImg")
+    let cancelIconImg = document.querySelectorAll(".cancelIconImg")
+    let editTask = document.querySelectorAll(".editTask")
+    let duplicateTask = document.querySelectorAll(".duplicateTask")
+    let deleteTask = document.querySelectorAll(".deleteTask")
+    let tasks = document.querySelectorAll(".tasks")
+
+    settingsIcon.forEach(function(oneTask){
+    
+        oneTask.addEventListener("click", function(e){
+    
+            let idOfObject = oneTask.parentElement.parentElement.id
+
+            let localTasks = getLS()
+            
+            setTodosToLS(localTasks)
+
+            
+            const indexOfTask = localTasks.findIndex( (task) => task.id === idOfObject)
+
+            console.log(localTasks[indexOfTask])
+
+            let getStyleOfSettingBlock = getComputedStyle(settingBlock[indexOfTask])   
+    
+            if(getStyleOfSettingBlock.display === "none"){
+                settingBlock[indexOfTask].style.display = "flex"
+                settingIconImg[indexOfTask].style.display = "none"
+                cancelIconImg[indexOfTask].style.display = "flex"
+                
+            }else{
+                settingBlock[indexOfTask].style.display = "none"
+                settingIconImg[indexOfTask].style.display = "flex"
+                cancelIconImg[indexOfTask].style.display = "none"
+            }
+
+            setTodosToLS(localTasks)
+
+            editTask[indexOfTask].addEventListener("click", function(e){
+                console.log(editTask[indexOfTask])
+            })
+
+            duplicateTask[indexOfTask].addEventListener("click", function(e){
+                console.log(duplicateTask[indexOfTask])
+            })
+
+            deleteTask[indexOfTask].addEventListener("click", function(e){
+
+
+                console.log(oneTask.parentElement.parentElement.id)
+
+                tasks[indexOfTask].remove()
+                localTasks.splice(indexOfTask, 1)
+            })
+    
+        })
+        
+    })
+
 
 }
 
@@ -100,11 +214,12 @@ let createStructure = function(object){
 
     taskDiv.innerHTML = `
 
-    <label for="${object.id}" class="task">
+    <label id="${object.id}" class="task">
         <div class="checkbox"><img class="checkIcon ${chechOrNot} " src="./assets/img/check.svg" id="${object.id}"></div>
         <span class="taskText">${object.taskText}</span>
 
-        <div class="rightImg "> <span class="settingsIcon"> <img class="settingIconImg" src="./assets/img/more.svg" alt="" srcset=""><img class="cancelIconImg" src="./assets/img/cancel.svg" alt="" srcset=""></span>
+        <div class="rightImg "> 
+        <span class="settingsIcon"> <img class="settingIconImg" src="./assets/img/more.svg" alt="" srcset=""><img class="cancelIconImg" src="./assets/img/cancel.svg" alt="" srcset=""></span>
     
         <div class="settingWrapper ">
             <ul class="settingBlock">
@@ -120,12 +235,9 @@ let createStructure = function(object){
     `
 
     taskWrapper.appendChild(taskDiv)
-    
 }
 
 
-
- 
 
 
 
