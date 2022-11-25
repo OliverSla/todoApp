@@ -123,7 +123,6 @@ let showSettingOnSubmit = function(idTaskSubmit){
                 setTodosToLS(localTasks)
 
             })
-    
         })
         
 
@@ -144,12 +143,9 @@ let showSetting = function(){
     settingsIcon.forEach(function(oneTask){
     
         oneTask.addEventListener("click", function(e){
+
     
             let idOfObject = oneTask.parentElement.parentElement.id
-
-            let localTasks = getLS()
-            
-            setTodosToLS(localTasks)
 
             
             const indexOfTask = localTasks.findIndex( (task) => task.id === idOfObject)
