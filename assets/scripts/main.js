@@ -4,7 +4,6 @@ let todoInput = document.querySelector(".todoInput")
 let taskWrapper = document.querySelector(".taskWrapper")
 
 
-
 let localTasks = getLS()
 
 
@@ -20,16 +19,11 @@ todoInput.addEventListener("submit", function(e){
         taskText: inputValue,
         check: false,
     }
-
     
     localTasks.push(taskObject)
 
     createStructure(taskObject)
     setTodosToLS(localTasks)
-
-    
-    showSettingOnSubmit(taskObject)
-    checkboxFunctionSubmit(taskObject)
     
     e.target.elements.textInput.value = ""
 
@@ -39,18 +33,24 @@ todoInput.addEventListener("submit", function(e){
 
 /* Load tasks form localstorage */
 
+
+
 if(localTasks.length > 0){
 
     localTasks.forEach(function(oneTask){
         createStructure(oneTask)
     })
-
-    checkboxFunctionLoad()
-    showSetting()
     
 }else{
     console.log("LocalStorage is empty")
 }
+
+
+let tasks = document.querySelectorAll(".tasks")
+
+console.log(tasks)
+
+
 
 
 
