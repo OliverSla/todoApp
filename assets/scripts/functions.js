@@ -70,6 +70,7 @@ let createStructure = function(object){
 
     checkboxTask.addEventListener("click", function(e){
 
+
         if(localTasks[indexOfTask].check == false){
             localTasks[indexOfTask].check = true
             checkboxTask.children[0].classList = "checkIcon check"  
@@ -85,18 +86,39 @@ let createStructure = function(object){
 
     let deleteTask = taskDiv.children[0].children[2].children[1].children[0].children[2]
 
+
     deleteTask.addEventListener("click", function(e){
 
-        localTasks = getLS()
         localTasks.splice(indexOfTask, 1)
         setTodosToLS(localTasks)
-        taskDiv.remove()
+
+        let tasks = document.querySelectorAll(".tasks")
+        tasks.forEach(function(oneTask){
+            oneTask.remove()
+        })
+        localTasks.forEach(function(oneTask){
+            createStructure(oneTask)
+        })
+
+        count()
 
     })
 
     taskWrapper.appendChild(taskDiv)
 
 }
+
+
+let count = function(){
+
+    let taskRemain = document.querySelector(".taskRemain")
+    taskRemain.textContent = localTasks.length
+
+}
+
+
+
+
 
 
 
