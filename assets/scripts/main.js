@@ -24,7 +24,7 @@ todoInput.addEventListener("submit", function(e){
 
     createStructure(taskObject)
     setTodosToLS(localTasks)
-    count()
+
     
     e.target.elements.textInput.value = ""
 
@@ -39,11 +39,10 @@ if(localTasks.length > 0){
 
     localTasks.forEach(function(oneTask){
         createStructure(oneTask)
-        count()
     })
     
 }else{
-    console.log("LocalStorage is empty")
+    count()
 }
 
 

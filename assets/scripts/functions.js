@@ -60,6 +60,8 @@ let createStructure = function(object){
     </label>
     `
 
+    count()
+
     let idOfElement = taskDiv.children[0].id
     let indexOfTask = localTasks.findIndex( (task) => task.id === idOfElement)
 
@@ -109,10 +111,20 @@ let createStructure = function(object){
 }
 
 
+
 let count = function(){
 
     let taskRemain = document.querySelector(".taskRemain")
-    taskRemain.textContent = localTasks.length
+
+    let count1 = function(localTasks){
+        if(localTasks.length !== undefined){
+            return localTasks.length
+        }else{
+            return 0
+        }
+    }
+
+    taskRemain.textContent = count1(localTasks)
 
 }
 
