@@ -60,14 +60,34 @@ let createStructure = function(object){
     </label>
     `
 
+    let idOfElement = taskDiv.children[0].id
+    let indexOfTask = localTasks.findIndex( (task) => task.id === idOfElement)
+
+    let checkboxTask = taskDiv.children[0].children[0]
+
+    console.log()
+
+
+    checkboxTask.addEventListener("click", function(e){
+
+        if(localTasks[indexOfTask].check == false){
+            localTasks[indexOfTask].check = true
+            checkboxTask.children[0].classList = "checkIcon check"  
+           }else{
+            localTasks[indexOfTask].check = false
+            checkboxTask.children[0].classList = "checkIcon uncheck"
+           }
+           setTodosToLS(localTasks)
+    })
+    
+    
+
 
     let deleteTask = taskDiv.children[0].children[2].children[1].children[0].children[2]
 
     deleteTask.addEventListener("click", function(e){
 
         localTasks = getLS()
-        let idOfElement = taskDiv.children[0].id
-        let indexOfTask = localTasks.findIndex( (task) => task.id === idOfElement)
         localTasks.splice(indexOfTask, 1)
         setTodosToLS(localTasks)
         taskDiv.remove()

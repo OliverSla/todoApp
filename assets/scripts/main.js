@@ -26,7 +26,6 @@ todoInput.addEventListener("submit", function(e){
     setTodosToLS(localTasks)
     
     e.target.elements.textInput.value = ""
-
     
     
 })
