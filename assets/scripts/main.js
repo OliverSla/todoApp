@@ -45,10 +45,7 @@ if(localTasks.length > 0){
     count()
 }
 
-
-
-
-
+deleteAllTasks()
 
 
 

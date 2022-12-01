@@ -20,7 +20,6 @@ let setTodosToLS = function(toSave){
   
 /* Create structure of todo */
 
-
 let createStructure = function(object){
 
     let taskDiv = document.createElement("div")
@@ -155,7 +154,25 @@ let count = function(){
 
 
 
+let deleteAllTasks = function(){
 
+    let deleteAll = document.querySelector(".deleteAll")
+
+    deleteAll.addEventListener("click", function(e){
+
+        let tasks = document.querySelectorAll(".tasks")
+        tasks.forEach(function(oneTask){
+            oneTask.remove()
+        })
+
+        localTasks = []
+        setTodosToLS(localTasks)
+        
+        count()
+    })
+
+
+}
 
 
 
