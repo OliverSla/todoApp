@@ -82,8 +82,33 @@ let createStructure = function(object){
            }
            setTodosToLS(localTasks)
     })
+
     
+
+    let duplicateTask = taskDiv.children[0].children[2].children[1].children[0].children[1]
     
+    duplicateTask.addEventListener("click", function(e){
+        
+        let taskObjectDuplicate = {
+            id: uuidv4(),
+            taskText: taskDiv.children[0].children[1].textContent,
+            check: false,
+        }
+    
+        localTasks.splice(indexOfTask + 1, 0, taskObjectDuplicate )
+        createStructure(taskObjectDuplicate)
+        setTodosToLS(localTasks)
+
+        let tasks = document.querySelectorAll(".tasks")
+        tasks.forEach(function(oneTask){
+            oneTask.remove()
+        })
+        localTasks.forEach(function(oneTask){
+            createStructure(oneTask)
+        })
+
+
+    })
 
 
     let deleteTask = taskDiv.children[0].children[2].children[1].children[0].children[2]
