@@ -64,10 +64,11 @@ let createStructure = function(object){
     let idOfElement = taskDiv.children[0].id
     let indexOfTask = localTasks.findIndex( (task) => task.id === idOfElement)
 
+
+
+    /* task checkbox*/
+
     let checkboxTask = taskDiv.children[0].children[0]
-
-    console.log()
-
 
     checkboxTask.addEventListener("click", function(e){
 
@@ -82,7 +83,57 @@ let createStructure = function(object){
            setTodosToLS(localTasks)
     })
 
+
+
+
+
+    /* Edit task */
     
+    let editTask = taskDiv.children[0].children[2].children[1].children[0].children[0]
+
+        editTask.addEventListener("click", function(e){
+
+            localTasks = getLS()
+
+            let textElement = taskDiv.children[0].children[1]
+            let valueOfTask = localTasks[indexOfTask].taskText
+
+            textElement.innerHTML = ""
+
+
+            let inputEdit = document.createElement("input")
+            inputEdit.classList.add("inputEdit")
+            inputEdit.value = valueOfTask
+            textElement.appendChild(inputEdit)
+
+            
+            inputEdit.addEventListener("keyup", function(e){
+                if(e.key === "Enter"){
+                    
+                    console.log(inputEdit.value)
+
+                    localTasks[indexOfTask].taskText = inputEdit.value
+                    setTodosToLS(localTasks)
+
+                    let tasks = document.querySelectorAll(".tasks")
+                     tasks.forEach(function(oneTask){
+                         oneTask.remove()
+                     })
+                     localTasks.forEach(function(oneTask){
+                         createStructure(oneTask)
+                     })
+
+
+                }
+            })
+
+
+        })
+
+
+
+
+    /* Duplciate task */
 
     let duplicateTask = taskDiv.children[0].children[2].children[1].children[0].children[1]
     
@@ -109,6 +160,7 @@ let createStructure = function(object){
 
     })
 
+    /* Delete task */ 
 
     let deleteTask = taskDiv.children[0].children[2].children[1].children[0].children[2]
 
@@ -134,7 +186,7 @@ let createStructure = function(object){
 
 }
 
-
+/* Count tasks*/ 
 
 let count = function(){
 
@@ -152,7 +204,7 @@ let count = function(){
 
 }
 
-
+/* Delete all tasks */
 
 let deleteAllTasks = function(){
 
@@ -171,8 +223,6 @@ let deleteAllTasks = function(){
 
         count()
     })
-
-
 }
 
 
