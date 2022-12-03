@@ -158,6 +158,7 @@ let deleteAllTasks = function(){
 
     let deleteAll = document.querySelector(".deleteAll")
 
+
     deleteAll.addEventListener("click", function(e){
 
         let tasks = document.querySelectorAll(".tasks")
@@ -167,12 +168,11 @@ let deleteAllTasks = function(){
 
         localTasks = []
         setTodosToLS(localTasks)
-        
+
         count()
     })
 
 
 }
-
 
 

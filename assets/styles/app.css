@@ -322,9 +322,9 @@ Checkbox
 
 
 .appFooter{
+    display: flex;
     margin-bottom: 10px;
     justify-content: center;
-    display: flex;
     width: 100%;
     height: 70px;
 }
