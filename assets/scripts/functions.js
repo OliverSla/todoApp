@@ -106,12 +106,31 @@ let createStructure = function(object){
             inputEdit.value = valueOfTask
             textElement.appendChild(inputEdit)
 
-            
+            let editButtonInInput = document.createElement("a")
+            editButtonInInput.classList.add("editButtonInInput")
+            editButtonInInput.textContent = "Submit"
+            textElement.appendChild(editButtonInInput)
+
+
+            editButtonInInput.addEventListener("click", function(e){
+
+                localTasks[indexOfTask].taskText = inputEdit.value
+                setTodosToLS(localTasks)
+
+                let tasks = document.querySelectorAll(".tasks")
+                 tasks.forEach(function(oneTask){
+                     oneTask.remove()
+                 })
+                 localTasks.forEach(function(oneTask){
+                     createStructure(oneTask)
+                 })
+
+            })
+
+
             inputEdit.addEventListener("keyup", function(e){
                 if(e.key === "Enter"){
                     
-                    console.log(inputEdit.value)
-
                     localTasks[indexOfTask].taskText = inputEdit.value
                     setTodosToLS(localTasks)
 
@@ -122,10 +141,12 @@ let createStructure = function(object){
                      localTasks.forEach(function(oneTask){
                          createStructure(oneTask)
                      })
-
-
                 }
+
             })
+
+            
+
 
 
         })

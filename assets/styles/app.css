@@ -385,3 +385,11 @@ Checkbox
 }
 
 .inputEdit::selection { background: rgb(223, 175, 153); } ::-moz-selection { background: rgb(223, 175, 153); }
+
+
+.editButtonInInput{
+    z-index: 10000;
+    cursor: pointer;
+    font-size: 18px;
+    color: rgb(66, 180, 82);
+}
