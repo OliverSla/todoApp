@@ -22,6 +22,7 @@ let setTodosToLS = function(toSave){
 
 let createStructure = function(object){
 
+
     let taskDiv = document.createElement("div")
     taskDiv.className = "tasks"
 
@@ -35,13 +36,16 @@ let createStructure = function(object){
         chechOrNot = "check"
     }
 
+
+    let indexOfObect = localTasks.indexOf(object)
+
     // Task Structure
 
     taskDiv.innerHTML = `
 
     <label id="${object.id}" class="task">
         <div class="checkbox"><img class="checkIcon ${chechOrNot} " src="./assets/img/check.svg" id="${object.id}"></div>
-        <span class="taskText">${object.taskText}</span>
+        <span class="taskText">  ${object.taskText}</span>
 
         <div class="rightImg "> 
         <span class="settingsIcon"> <img class="settingIconImg" src="./assets/img/more.svg" alt="" srcset=""><img class="cancelIconImg" src="./assets/img/cancel.svg" alt="" srcset=""></span>
@@ -58,6 +62,9 @@ let createStructure = function(object){
         </div>
     </label>
     `
+
+    let appFooter = document.querySelector(".appFooter")
+    appFooter.style.display = "flex"
 
     count()
 
@@ -199,6 +206,14 @@ let createStructure = function(object){
             createStructure(oneTask)
         })
 
+        if(localTasks.length > 0){
+            let appFooter = document.querySelector(".appFooter")
+            appFooter.style.display = "flex"
+        }else{
+            let appFooter = document.querySelector(".appFooter")
+            appFooter.style.display = "none"
+        }
+
         count()
 
     })
@@ -234,6 +249,9 @@ let deleteAllTasks = function(){
 
     deleteAll.addEventListener("click", function(e){
 
+        let appFooter = document.querySelector(".appFooter")
+        appFooter.style.display = "none"
+
         let tasks = document.querySelectorAll(".tasks")
         tasks.forEach(function(oneTask){
             oneTask.remove()
@@ -244,6 +262,10 @@ let deleteAllTasks = function(){
 
         count()
     })
+
+
+
+
 }
 
 

@@ -42,11 +42,19 @@ if(localTasks.length > 0){
     })
     
 }else{
+
+    if(localTasks.length > 0){
+        let appFooter = document.querySelector(".appFooter")
+        appFooter.style.display = "flex"
+    }else{
+        let appFooter = document.querySelector(".appFooter")
+        appFooter.style.display = "none"
+    }
+    
     count()
 }
 
 deleteAllTasks()
-
 
 
 
