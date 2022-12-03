@@ -45,7 +45,8 @@ let createStructure = function(object){
 
     <label id="${object.id}" class="task">
         <div class="checkbox"><img class="checkIcon ${chechOrNot} " src="./assets/img/check.svg" id="${object.id}"></div>
-        <span class="taskText">  ${object.taskText}</span>
+        
+        <span class="taskText">${object.taskText}</span>
 
         <div class="rightImg "> 
         <span class="settingsIcon"> <img class="settingIconImg" src="./assets/img/more.svg" alt="" srcset=""><img class="cancelIconImg" src="./assets/img/cancel.svg" alt="" srcset=""></span>
@@ -110,7 +111,7 @@ let createStructure = function(object){
 
             let inputEdit = document.createElement("input")
             inputEdit.classList.add("inputEdit")
-            inputEdit.value = valueOfTask
+            inputEdit.value = `${valueOfTask}`
             textElement.appendChild(inputEdit)
 
             let editButtonInInput = document.createElement("a")
