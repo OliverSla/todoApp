@@ -164,6 +164,7 @@ h2{
 }
 
 .taskText{
+    width: 100%;
     color: var(--primary);
     font-size: 20px;
     padding-left: 20px;
@@ -238,6 +239,7 @@ Settings
     padding-top: 150px;
     position: absolute;
     right: -170px;
+    transition: 1s ease-out;
 }
 
 .settingBlock{
@@ -253,9 +255,25 @@ Settings
     padding: 4px;
 }
 
+@-webkit-keyframes cssAnimation {
+    from {
+      -webkit-transform: rotate(0deg) scale(0.8);
+    }
+    to {
+      -webkit-transform: rotate(0deg) scale(1.2);
+    }
+  }
+
 .task:hover .rightImg:hover .settingBlock{
+    -webkit-animation-name: cssAnimation;
+    -webkit-animation-duration: 0.4s;
+    -webkit-animation-iteration-count: 0.4;
+    -webkit-animation-timing-function: ease;
     display: flex;
 }  
+
+
+
 
 .settingText{
     padding-left: 19px;
@@ -346,11 +364,12 @@ Checkbox
     border-radius: 13px;
     color: white;
     border: 10px 10px;
+    border: 1px solid var(--delete);
     
 }
 
 .deleteAll:hover{
-    border: 1px solid blue;
+    border: 1px solid var(--delete);
     background-color: transparent;
     transition: 0.2s;
     color: var(--delete);
@@ -380,6 +399,7 @@ Checkbox
     background-color: transparent;
     color: var(--primary);
     font-size: 20px;
+    width: 85%;
     border: none;
     outline: none;
 }
@@ -388,7 +408,8 @@ Checkbox
 
 
 .editButtonInInput{
-    z-index: 10000;
+    position: relative;
+    z-index: 1000;
     cursor: pointer;
     font-size: 18px;
     color: rgb(66, 180, 82);

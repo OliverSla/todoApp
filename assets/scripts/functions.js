@@ -69,6 +69,7 @@ let createStructure = function(object){
 
     count()
 
+
     let idOfElement = taskDiv.children[0].id
     let indexOfTask = localTasks.findIndex( (task) => task.id === idOfElement)
 
@@ -114,9 +115,10 @@ let createStructure = function(object){
             inputEdit.value = `${valueOfTask}`
             textElement.appendChild(inputEdit)
 
-            let editButtonInInput = document.createElement("a")
+            let editButtonInInput = document.createElement("img")
             editButtonInInput.classList.add("editButtonInInput")
             editButtonInInput.textContent = "Submit"
+            editButtonInInput
             textElement.appendChild(editButtonInInput)
 
 
@@ -150,12 +152,7 @@ let createStructure = function(object){
                          createStructure(oneTask)
                      })
                 }
-
             })
-
-            
-
-
 
         })
 
