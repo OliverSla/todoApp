@@ -115,10 +115,9 @@ let createStructure = function(object){
             inputEdit.value = `${valueOfTask}`
             textElement.appendChild(inputEdit)
 
-            let editButtonInInput = document.createElement("img")
+            let editButtonInInput = document.createElement("a")
             editButtonInInput.classList.add("editButtonInInput")
             editButtonInInput.textContent = "Submit"
-            editButtonInInput
             textElement.appendChild(editButtonInInput)
 
 
@@ -152,7 +151,12 @@ let createStructure = function(object){
                          createStructure(oneTask)
                      })
                 }
+
             })
+
+            
+
+
 
         })
 
