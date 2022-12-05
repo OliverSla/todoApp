@@ -315,7 +315,8 @@ li:hover{
 
 .deleteIcon{
     position: relative;
-    margin-left: 5px;
+    margin-left: 4px;
+    margin-right: 2px;
 }
 
 

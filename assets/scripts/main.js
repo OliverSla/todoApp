@@ -10,23 +10,29 @@ let localTasks = getLS()
 todoInput.addEventListener("submit", function(e){
 
     e.preventDefault()
-
-
     let inputValue = e.target.elements.textInput.value
 
-    let taskObject = {
-        id: uuidv4(),
-        taskText: inputValue,
-        check: false,
+    if(inputValue === ""){
+        alert("Please, write something to create a task")
+    }else{
+        let taskObject = {
+            id: uuidv4(),
+            taskText: inputValue,
+            check: false,
+        }
+        
+        localTasks.push(taskObject)
+    
+        createStructure(taskObject)
+        setTodosToLS(localTasks)
+    
+        
+        e.target.elements.textInput.value = ""
+    
+        
+
+
     }
-    
-    localTasks.push(taskObject)
-
-    createStructure(taskObject)
-    setTodosToLS(localTasks)
-
-    
-    e.target.elements.textInput.value = ""
 
     
 })
