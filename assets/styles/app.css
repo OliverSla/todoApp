@@ -176,8 +176,10 @@ h2{
 }
 
 .lineThroughCheck{
-    text-decoration: line-through;
-    text-decoration-color: var(--primary);
+    text-decoration: underline;
+    text-decoration-skip-ink:none ;
+    text-underline-offset: -6px;
+    text-decoration-color:#0059b87d;
 }
 
 .lineThroughUncheck{
