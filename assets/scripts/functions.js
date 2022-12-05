@@ -29,11 +29,14 @@ let createStructure = function(object){
     // Checkbox
 
     let chechOrNot = ""
+    let lineThroughText = ""
 
     if(object.check === false){
        chechOrNot = "uncheck"
+       lineThroughText = "lineThroughUncheck"
     }else{
         chechOrNot = "check"
+        lineThroughText = "lineThroughCheck"
     }
 
 
@@ -46,7 +49,7 @@ let createStructure = function(object){
     <label id="${object.id}" class="task">
         <div class="checkbox"><img class="checkIcon ${chechOrNot} " src="./assets/img/check.svg" id="${object.id}"></div>
         
-        <span class="taskText">${object.taskText}</span>
+        <span class="taskText ${lineThroughText}">${object.taskText}</span>
 
         <div class="rightImg "> 
         <span class="settingsIcon"> <img class="settingIconImg" src="./assets/img/more.svg" alt="" srcset=""><img class="cancelIconImg" src="./assets/img/cancel.svg" alt="" srcset=""></span>
@@ -78,16 +81,21 @@ let createStructure = function(object){
     /* task checkbox*/
 
     let checkboxTask = taskDiv.children[0].children[0]
+    let checkTextLine = taskDiv.children[0].children[1]
 
     checkboxTask.addEventListener("click", function(e){
 
 
         if(localTasks[indexOfTask].check == false){
             localTasks[indexOfTask].check = true
-            checkboxTask.children[0].classList = "checkIcon check"  
+            checkboxTask.children[0].classList = "checkIcon check"
+            checkTextLine.classList.add("lineThroughCheck")
+            checkTextLine.classList.remove("lineThroughUncheck")
            }else{
             localTasks[indexOfTask].check = false
             checkboxTask.children[0].classList = "checkIcon uncheck"
+            checkTextLine.classList.add("lineThroughUncheck")
+            checkTextLine.classList.remove("lineThroughCheck")
            }
            setTodosToLS(localTasks)
     })
