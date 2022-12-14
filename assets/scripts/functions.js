@@ -1,50 +1,46 @@
-
 /* Get localStorage todo list */
 
-let getLS = function(){
-    if(localStorage.getItem("task") !== null){
-        let getTasks = localStorage.getItem("task")
-        result = JSON.parse(getTasks)
-        return result
-    }else{
-        return [] 
-    }
-}
+let getLS = function () {
+  if (localStorage.getItem("task") !== null) {
+    let getTasks = localStorage.getItem("task");
+    result = JSON.parse(getTasks);
+    return result;
+  } else {
+     return [];
+  }
+};
 
 /* Set localStorage todos */
 
-let setTodosToLS = function(toSave){
-    let toString = JSON.stringify(toSave)
-    localStorage.setItem("task", toString )
-}
-  
+let setTodosToLS = function (toSave) {
+  let toString = JSON.stringify(toSave);
+  localStorage.setItem("task", toString);
+};
+
 /* Create structure of todo */
 
-let createStructure = function(object){
+let createStructure = function (object) {
+  let taskDiv = document.createElement("div");
+  taskDiv.className = "tasks";
 
+  // Checkbox
 
-    let taskDiv = document.createElement("div")
-    taskDiv.className = "tasks"
+  let chechOrNot = "";
+  let lineThroughText = "";
 
-    // Checkbox
+  if (object.check === false) {
+    chechOrNot = "uncheck";
+    lineThroughText = "lineThroughUncheck";
+  } else {
+    chechOrNot = "check";
+    lineThroughText = "lineThroughCheck";
+  }
 
-    let chechOrNot = ""
-    let lineThroughText = ""
+  let indexOfObect = localTasks.indexOf(object);
 
-    if(object.check === false){
-       chechOrNot = "uncheck"
-       lineThroughText = "lineThroughUncheck"
-    }else{
-        chechOrNot = "check"
-        lineThroughText = "lineThroughCheck"
-    }
+  // Task Structure
 
-
-    let indexOfObect = localTasks.indexOf(object)
-
-    // Task Structure
-
-    taskDiv.innerHTML = `
+  taskDiv.innerHTML = `
 
     <label id="${object.id}" class="task">
         <div class="checkbox"><img class="checkIcon ${chechOrNot} " src="./assets/img/check.svg" id="${object.id}"></div>
@@ -65,217 +61,177 @@ let createStructure = function(object){
         </div>
         </div>
     </label>
-    `
+    `;
 
-    let appFooter = document.querySelector(".appFooter")
-    appFooter.style.display = "flex"
+  let appFooter = document.querySelector(".appFooter");
+  appFooter.style.display = "flex";
 
-    count()
+  count();
 
+  let idOfElement = taskDiv.children[0].id;
+  let indexOfTask = localTasks.findIndex((task) => task.id === idOfElement);
 
-    let idOfElement = taskDiv.children[0].id
-    let indexOfTask = localTasks.findIndex( (task) => task.id === idOfElement)
+  /* task checkbox*/
 
+  let checkboxTask = taskDiv.children[0].children[0];
+  let checkTextLine = taskDiv.children[0].children[1];
 
+  checkboxTask.addEventListener("click", function (e) {
+    if (localTasks[indexOfTask].check == false) {
+      localTasks[indexOfTask].check = true;
+      checkboxTask.children[0].classList = "checkIcon check";
+      checkTextLine.classList.add("lineThroughCheck");
+      checkTextLine.classList.remove("lineThroughUncheck");
+    } else {
+      localTasks[indexOfTask].check = false;
+      checkboxTask.children[0].classList = "checkIcon uncheck";
+      checkTextLine.classList.add("lineThroughUncheck");
+      checkTextLine.classList.remove("lineThroughCheck");
+    }
+    setTodosToLS(localTasks);
+  });
 
-    /* task checkbox*/
+  /* Edit task */
 
-    let checkboxTask = taskDiv.children[0].children[0]
-    let checkTextLine = taskDiv.children[0].children[1]
+  let editTask =
+    taskDiv.children[0].children[2].children[1].children[0].children[0];
 
-    checkboxTask.addEventListener("click", function(e){
+  editTask.addEventListener("click", function (e) {
+    localTasks = getLS();
 
+    let textElement = taskDiv.children[0].children[1];
+    let valueOfTask = localTasks[indexOfTask].taskText;
 
-        if(localTasks[indexOfTask].check == false){
-            localTasks[indexOfTask].check = true
-            checkboxTask.children[0].classList = "checkIcon check"
-            checkTextLine.classList.add("lineThroughCheck")
-            checkTextLine.classList.remove("lineThroughUncheck")
-           }else{
-            localTasks[indexOfTask].check = false
-            checkboxTask.children[0].classList = "checkIcon uncheck"
-            checkTextLine.classList.add("lineThroughUncheck")
-            checkTextLine.classList.remove("lineThroughCheck")
-           }
-           setTodosToLS(localTasks)
-    })
+    textElement.innerHTML = "";
 
+    let inputEdit = document.createElement("input");
+    inputEdit.classList.add("inputEdit");
+    inputEdit.value = `${valueOfTask}`;
+    textElement.appendChild(inputEdit);
 
+    let editButtonInInput = document.createElement("a");
+    editButtonInInput.classList.add("editButtonInInput");
+    editButtonInInput.textContent = "Submit";
+    textElement.appendChild(editButtonInInput);
 
+    editButtonInInput.addEventListener("click", function (e) {
+      localTasks[indexOfTask].taskText = inputEdit.value;
+      setTodosToLS(localTasks);
 
+      let tasks = document.querySelectorAll(".tasks");
+      tasks.forEach(function (oneTask) {
+        oneTask.remove();
+      });
+      localTasks.forEach(function (oneTask) {
+        createStructure(oneTask);
+      });
+    });
 
-    /* Edit task */
-    
-    let editTask = taskDiv.children[0].children[2].children[1].children[0].children[0]
+    inputEdit.addEventListener("keyup", function (e) {
+      if (e.key === "Enter") {
+        localTasks[indexOfTask].taskText = inputEdit.value;
+        setTodosToLS(localTasks);
 
-        editTask.addEventListener("click", function(e){
+        let tasks = document.querySelectorAll(".tasks");
+        tasks.forEach(function (oneTask) {
+          oneTask.remove();
+        });
+        localTasks.forEach(function (oneTask) {
+          createStructure(oneTask);
+        });
+      }
+    });
+  });
 
-            localTasks = getLS()
+  /* Duplciate task */
 
-            let textElement = taskDiv.children[0].children[1]
-            let valueOfTask = localTasks[indexOfTask].taskText
+  let duplicateTask =
+    taskDiv.children[0].children[2].children[1].children[0].children[1];
 
-            textElement.innerHTML = ""
+  duplicateTask.addEventListener("click", function (e) {
+    let taskObjectDuplicate = {
+      id: uuidv4(),
+      taskText: taskDiv.children[0].children[1].textContent,
+      check: false,
+    };
 
+    localTasks.splice(indexOfTask + 1, 0, taskObjectDuplicate);
+    createStructure(taskObjectDuplicate);
+    setTodosToLS(localTasks);
 
-            let inputEdit = document.createElement("input")
-            inputEdit.classList.add("inputEdit")
-            inputEdit.value = `${valueOfTask}`
-            textElement.appendChild(inputEdit)
+    let tasks = document.querySelectorAll(".tasks");
+    tasks.forEach(function (oneTask) {
+      oneTask.remove();
+    });
+    localTasks.forEach(function (oneTask) {
+      createStructure(oneTask);
+    });
+  });
 
-            let editButtonInInput = document.createElement("a")
-            editButtonInInput.classList.add("editButtonInInput")
-            editButtonInInput.textContent = "Submit"
-            textElement.appendChild(editButtonInInput)
+  /* Delete task */
 
+  let deleteTask =
+    taskDiv.children[0].children[2].children[1].children[0].children[2];
 
-            editButtonInInput.addEventListener("click", function(e){
+  deleteTask.addEventListener("click", function (e) {
+    localTasks.splice(indexOfTask, 1);
+    setTodosToLS(localTasks);
 
-                localTasks[indexOfTask].taskText = inputEdit.value
-                setTodosToLS(localTasks)
+    let tasks = document.querySelectorAll(".tasks");
+    tasks.forEach(function (oneTask) {
+      oneTask.remove();
+    });
+    localTasks.forEach(function (oneTask) {
+      createStructure(oneTask);
+    });
 
-                let tasks = document.querySelectorAll(".tasks")
-                 tasks.forEach(function(oneTask){
-                     oneTask.remove()
-                 })
-                 localTasks.forEach(function(oneTask){
-                     createStructure(oneTask)
-                 })
-
-            })
-
-
-            inputEdit.addEventListener("keyup", function(e){
-                if(e.key === "Enter"){
-                    
-                    localTasks[indexOfTask].taskText = inputEdit.value
-                    setTodosToLS(localTasks)
-
-                    let tasks = document.querySelectorAll(".tasks")
-                     tasks.forEach(function(oneTask){
-                         oneTask.remove()
-                     })
-                     localTasks.forEach(function(oneTask){
-                         createStructure(oneTask)
-                     })
-                }
-
-            })
-
-            
-
-
-
-        })
-
-
-
-
-    /* Duplciate task */
-
-    let duplicateTask = taskDiv.children[0].children[2].children[1].children[0].children[1]
-    
-    duplicateTask.addEventListener("click", function(e){
-        
-        let taskObjectDuplicate = {
-            id: uuidv4(),
-            taskText: taskDiv.children[0].children[1].textContent,
-            check: false,
-        }
-    
-        localTasks.splice(indexOfTask + 1, 0, taskObjectDuplicate )
-        createStructure(taskObjectDuplicate)
-        setTodosToLS(localTasks)
-
-        let tasks = document.querySelectorAll(".tasks")
-        tasks.forEach(function(oneTask){
-            oneTask.remove()
-        })
-        localTasks.forEach(function(oneTask){
-            createStructure(oneTask)
-        })
-
-
-    })
-
-    /* Delete task */ 
-
-    let deleteTask = taskDiv.children[0].children[2].children[1].children[0].children[2]
-
-
-    deleteTask.addEventListener("click", function(e){
-
-        localTasks.splice(indexOfTask, 1)
-        setTodosToLS(localTasks)
-
-        let tasks = document.querySelectorAll(".tasks")
-        tasks.forEach(function(oneTask){
-            oneTask.remove()
-        })
-        localTasks.forEach(function(oneTask){
-            createStructure(oneTask)
-        })
-
-        if(localTasks.length > 0){
-            let appFooter = document.querySelector(".appFooter")
-            appFooter.style.display = "flex"
-        }else{
-            let appFooter = document.querySelector(".appFooter")
-            appFooter.style.display = "none"
-        }
-
-        count()
-
-    })
-
-    taskWrapper.appendChild(taskDiv)
-
-}
-
-/* Count tasks*/ 
-
-let count = function(){
-
-    let taskRemain = document.querySelector(".taskRemain")
-
-    let count1 = function(localTasks){
-        if(localTasks.length !== undefined){
-            return localTasks.length
-        }else{
-            return 0
-        }
+    if (localTasks.length > 0) {
+      let appFooter = document.querySelector(".appFooter");
+      appFooter.style.display = "flex";
+    } else {
+      let appFooter = document.querySelector(".appFooter");
+      appFooter.style.display = "none";
     }
 
-    taskRemain.textContent = count1(localTasks)
+    count();
+  });
 
-}
+  taskWrapper.appendChild(taskDiv);
+};
+
+/* Count tasks*/
+
+let count = function () {
+  let taskRemain = document.querySelector(".taskRemain");
+
+  let count1 = function (localTasks) {
+    if (localTasks.length !== undefined) {
+      return localTasks.length;
+    } else {
+      return 0;
+    }
+  };
+
+  taskRemain.textContent = count1(localTasks);
+};
 
 /* Delete all tasks */
 
-let deleteAllTasks = function(){
+let deleteAllTasks = function () {
+  let deleteAll = document.querySelector(".deleteAll");
 
-    let deleteAll = document.querySelector(".deleteAll")
+  deleteAll.addEventListener("click", function (e) {
+    let appFooter = document.querySelector(".appFooter");
+    appFooter.style.display = "none";
 
+    let tasks = document.querySelectorAll(".tasks");
+    tasks.forEach(function (oneTask) {
+      oneTask.remove();
+    });
 
-    deleteAll.addEventListener("click", function(e){
+    localTasks = [];
+    setTodosToLS(localTasks);
 
-        let appFooter = document.querySelector(".appFooter")
-        appFooter.style.display = "none"
-
-        let tasks = document.querySelectorAll(".tasks")
-        tasks.forEach(function(oneTask){
-            oneTask.remove()
-        })
-
-        localTasks = []
-        setTodosToLS(localTasks)
-
-        count()
-    })
-
-
-
-
-}
-
-
+    count();
+  });
+};

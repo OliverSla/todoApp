@@ -1,4 +1,3 @@
-
 /* APP CSS */
 
 /*
@@ -6,15 +5,21 @@
 */
 
 
-*::selection { background: transparent; } ::-moz-selection { background: transparent; }
+*::selection {
+    background: transparent;
+}
+
+::-moz-selection {
+    background: transparent;
+}
 
 
 
-main{
+main {
     width: 100%;
 }
 
-.appWrapper{
+.appWrapper {
     width: 100%;
     margin-top: 150px;
     display: flex;
@@ -26,7 +31,7 @@ main{
 
 
 
-.app{
+.app {
     border-radius: 55px;
     width: 45%;
     min-width: 950px;
@@ -40,23 +45,23 @@ main{
 == APP HEADER ==
 */
 
-.appHeader{
+.appHeader {
     margin-top: 70px;
     width: 100%;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
-h1{
+h1 {
     font-size: 45px;
     color: var(--primary);
     font-weight: 500;
     letter-spacing: 1px;
 }
 
-h2{
+h2 {
     margin-top: 2px;
     font-size: 20px;
     color: var(--secondary);
@@ -69,15 +74,15 @@ h2{
 /* 
 == APP FORM / INPUT / SUBMIT ==
 */
- 
-.formWrapper{
+
+.formWrapper {
     width: 100%;
     margin-top: 45px;
     display: flex;
     justify-content: center;
 }
 
-.todoInput{
+.todoInput {
     position: relative;
     left: 40px;
     display: flex;
@@ -85,7 +90,7 @@ h2{
     width: 100%;
 }
 
-.textInput{
+.textInput {
     border: none;
     padding: 0px 20px;
     padding-right: 125px;
@@ -94,29 +99,35 @@ h2{
     font-size: 19px;
     color: #007BFF;
     width: 100%;
-    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.08) ;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.08);
 }
 
-.textInput::selection { background: rgb(207, 207, 207); } ::-moz-selection { background: rgb(207, 207, 207); }
+.textInput::selection {
+    background: rgb(207, 207, 207);
+}
 
-.textInput::placeholder::selection{
+::-moz-selection {
+    background: rgb(207, 207, 207);
+}
+
+.textInput::placeholder::selection {
     user-select: none;
 }
 
-.textInput::placeholder{
+.textInput::placeholder {
     color: var(--placeholder);
 }
 
-.textInput:focus{
+.textInput:focus {
     outline: none;
-    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.15) ;
+    box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.15);
 }
 
-.textInput:focus::placeholder{
+.textInput:focus::placeholder {
     color: transparent;
 }
 
-.submitInput{
+.submitInput {
     cursor: pointer;
     color: var(--primary);
     font-size: 19px;
@@ -127,15 +138,17 @@ h2{
     padding-left: 15px;
 }
 
-.submitInput:hover{
-    color: #0059b8;
+.submitInput:hover {
+    transition: 0.3s ease;
+    transform: scale(0.95);
+    color: var(--primary);
 }
 
 /* 
 == APP LINE == 
 */
 
-.lineWrapper{
+.lineWrapper {
     margin-top: 30px;
     display: flex;
     justify-content: center;
@@ -143,7 +156,7 @@ h2{
     padding: 0px 100px;
 }
 
-.line{
+.line {
     border-bottom: 1px solid var(--progress);
     width: 100%;
 }
@@ -153,42 +166,48 @@ h2{
 == TASKS AND SETTINGS ==
 */
 
-.taskWrapper{
+.taskWrapper {
     margin-top: 30px;
     margin-bottom: 40px;
     padding: 0px 100px;
     width: 100%;
-    
+
 }
 
-.tasks{
+.tasks {
     margin: 10px 0px;
     position: relative;
     display: flex;
     width: 100%;
 }
 
-.taskText{
+.taskText {
     width: 100%;
     color: var(--primary);
     font-size: 20px;
     padding-left: 20px;
 }
 
-.lineThroughCheck{
+.lineThroughCheck {
     text-decoration: underline;
-    text-decoration-skip-ink:none ;
+    text-decoration-skip-ink: none;
     text-underline-offset: -6px;
-    text-decoration-color:#0059b87d;
+    text-decoration-color: #0059b87d;
 }
 
-.lineThroughUncheck{
+.lineThroughUncheck {
     text-decoration: none;
 }
 
-.taskText::selection { background: rgb(207, 207, 207); } ::-moz-selection { background: rgb(207, 207, 207); }
+.taskText::selection {
+    background: rgb(207, 207, 207);
+}
 
-.task{
+::-moz-selection {
+    background: rgb(207, 207, 207);
+}
+
+.task {
     padding: 10px 0px;
     flex: 1 100%;
     flex-direction: row;
@@ -197,7 +216,7 @@ h2{
     position: relative;
 }
 
-.rightImg{
+.rightImg {
     display: none;
     flex: 2 10%;
     align-items: center;
@@ -205,12 +224,12 @@ h2{
     justify-content: flex-end;
 }
 
-.task:hover .rightImg{
+.task:hover .rightImg {
     display: flex;
 }
 
 
-.settingsIcon{
+.settingsIcon {
     padding: 20px;
     right: -20px;
     cursor: pointer;
@@ -221,7 +240,7 @@ h2{
     align-items: center;
 }
 
-.settingBtn{
+.settingBtn {
     position: absolute;
     padding: 25px;
     right: -25px;
@@ -233,7 +252,7 @@ h2{
     transition: 0.5s;
 }
 
-.cancelIconImg{
+.cancelIconImg {
     display: none;
     transform: scale(1.1);
     transition: 0.5s;
@@ -245,7 +264,7 @@ h2{
 Settings
 */
 
-.settingWrapper{
+.settingWrapper {
     height: 50%;
     z-index: 10;
     display: flex;
@@ -258,8 +277,8 @@ Settings
     transition: 1s ease-out;
 }
 
-.settingBlock{
-    background-color: rgb(250, 250, 250,0.70);
+.settingBlock {
+    background-color: rgb(250, 250, 250, 0.70);
     box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.08);
     display: none;
     position: relative;
@@ -273,31 +292,32 @@ Settings
 
 @-webkit-keyframes cssAnimation {
     from {
-      -webkit-transform: rotate(0deg) scale(0.8);
+        -webkit-transform: rotate(0deg) scale(0.8);
     }
-    to {
-      -webkit-transform: rotate(0deg) scale(1.2);
-    }
-  }
 
-.task:hover .rightImg:hover .settingBlock{
+    to {
+        -webkit-transform: rotate(0deg) scale(1.2);
+    }
+}
+
+.task:hover .rightImg:hover .settingBlock {
     -webkit-animation-name: cssAnimation;
     -webkit-animation-duration: 0.4s;
     -webkit-animation-iteration-count: 0.4;
     -webkit-animation-timing-function: ease;
     display: flex;
-}  
+}
 
 
 
 
-.settingText{
+.settingText {
     padding-left: 19px;
 }
 
-li{
+li {
     cursor: pointer;
-    display:flex;
+    display: flex;
     align-items: center;
     font-size: 18px;
     color: var(--text);
@@ -306,14 +326,14 @@ li{
     border-radius: 10px;
 }
 
-li:hover{
+li:hover {
 
     background-color: rgba(217, 217, 217, 0.4);
 
 
 }
 
-.deleteIcon{
+.deleteIcon {
     position: relative;
     margin-left: 4px;
     margin-right: 2px;
@@ -324,23 +344,23 @@ li:hover{
 Checkbox
 */
 
-.checkIcon{
-    
+.checkIcon {
+
     position: relative;
     left: 5px;
     bottom: 0px;
 }
 
-.check{
+.check {
     display: flex;
 }
 
-.uncheck{
+.uncheck {
     display: none;
 }
 
 
-.checkbox{
+.checkbox {
     cursor: pointer;
     position: relative;
     display: block;
@@ -360,7 +380,7 @@ Checkbox
 
 
 
-.appFooter{
+.appFooter {
     display: flex;
     margin-bottom: 10px;
     justify-content: center;
@@ -368,7 +388,7 @@ Checkbox
     height: 70px;
 }
 
-.deleteAll{
+.deleteAll {
     cursor: pointer;
     font-weight: 100;
     height: 47px;
@@ -382,10 +402,10 @@ Checkbox
     color: white;
     border: 10px 10px;
     border: 1px solid var(--delete);
-    
+
 }
 
-.deleteAll:hover{
+.deleteAll:hover {
     border: 1px solid var(--delete);
     background-color: transparent;
     transition: 0.2s;
@@ -394,20 +414,20 @@ Checkbox
 }
 
 
-.taskToDo{
+.taskToDo {
     margin-top: 13px;
     margin-left: 20px;
     font-size: 18px;
     color: var(--secondary);
 }
 
-.taskRemain{
+.taskRemain {
     font-size: 18px;
     color: var(--primary);
     font-weight: 500;
 }
 
-.hoverForSettings{
+.hoverForSettings {
     background-color: rgba(0, 0, 255, 0.468);
 }
 
@@ -421,10 +441,16 @@ Checkbox
     outline: none;
 }
 
-.inputEdit::selection { background: rgb(223, 175, 153); } ::-moz-selection { background: rgb(223, 175, 153); }
+.inputEdit::selection {
+    background: rgb(223, 175, 153);
+}
+
+::-moz-selection {
+    background: rgb(223, 175, 153);
+}
 
 
-.editButtonInInput{
+.editButtonInInput {
     position: relative;
     z-index: 1000;
     cursor: pointer;
@@ -437,7 +463,7 @@ Checkbox
     text-decoration: transparent;
 }
 
-.editButtonInInput:hover{
+.editButtonInInput:hover {
     opacity: 1;
     text-decoration: transparent;
 }
