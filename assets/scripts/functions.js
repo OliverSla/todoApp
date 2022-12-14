@@ -125,6 +125,9 @@ let createStructure = function (object) {
       localTasks.forEach(function (oneTask) {
         createStructure(oneTask);
       });
+
+      alert("Edited successfully");
+
     });
 
     inputEdit.addEventListener("keyup", function (e) {
@@ -139,6 +142,9 @@ let createStructure = function (object) {
         localTasks.forEach(function (oneTask) {
           createStructure(oneTask);
         });
+
+        alert("Edited successfully");
+        
       }
     });
   });
