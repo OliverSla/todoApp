@@ -308,9 +308,6 @@ Settings
     display: flex;
 }
 
-
-
-
 .settingText {
     padding-left: 19px;
 }
@@ -329,8 +326,6 @@ li {
 li:hover {
 
     background-color: rgba(217, 217, 217, 0.4);
-
-
 }
 
 .deleteIcon {
@@ -338,7 +333,6 @@ li:hover {
     margin-left: 4px;
     margin-right: 2px;
 }
-
 
 /*
 Checkbox
@@ -359,7 +353,6 @@ Checkbox
     display: none;
 }
 
-
 .checkbox {
     cursor: pointer;
     position: relative;
@@ -373,12 +366,9 @@ Checkbox
     background-color: transparent;
 }
 
-
 /* 
 == APP FOOTER ==
 */
-
-
 
 .appFooter {
     display: flex;
@@ -413,7 +403,6 @@ Checkbox
 
 }
 
-
 .taskToDo {
     margin-top: 13px;
     margin-left: 20px;
@@ -431,7 +420,6 @@ Checkbox
     background-color: rgba(0, 0, 255, 0.468);
 }
 
-
 .inputEdit {
     background-color: transparent;
     color: var(--primary);
@@ -448,7 +436,6 @@ Checkbox
 ::-moz-selection {
     background: rgb(223, 175, 153);
 }
-
 
 .editButtonInInput {
     position: relative;

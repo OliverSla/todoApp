@@ -6,7 +6,7 @@ let getLS = function () {
     result = JSON.parse(getTasks);
     return result;
   } else {
-     return [];
+    return [];
   }
 };
 
